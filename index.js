@@ -24,8 +24,9 @@ mqttclient.on('connect', function () {
   mqttclient.subscribe('devices/family_room/fanlight_automation');
   mqttclient.subscribe('devices/upstairs_hallway/motion_sensor/motion');
   mqttclient.subscribe('devices/garage_door_opener1/clientstatus');
-  setInterval(function(){ mqttclient.publish('devices/server/load',osutils.loadavg(1).toString()); }, 10000);
 })
+
+setInterval(function(){ mqttclient.publish('devices/server/load',osutils.loadavg(1).toString()); }, 10000);
 
 mqttclient.on('message', function (topic, messageBuf) {
   let message = messageBuf.toString();
